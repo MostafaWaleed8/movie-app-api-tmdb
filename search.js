@@ -14,10 +14,11 @@ form.addEventListener("submit", (e) => {
     const data = await res.json();
     const movies = await data.results;
     console.log(movies);
-    movies.map((movie) => {
-      const div = document.createElement("div");
-      div.classList.add("card");
-      div.innerHTML = `
+    if (movies.length > 0) {
+      movies.map((movie) => {
+        const div = document.createElement("div");
+        div.classList.add("card");
+        div.innerHTML = `
             <img src=${IMG_API + movie.poster_path} loading="lazy" />
             <div class="n-v"> 
             <h4 class="title">${movie.title}</h4>
@@ -32,8 +33,14 @@ form.addEventListener("submit", (e) => {
                 <h3>${movie.overview}</h3> 
             </div>
             `;
+        app.appendChild(div);
+      });
+    } else {
+      const div = document.createElement("div");
+      div.classList.add("card");
+      div.innerHTML = `<p>Sorry, the movie that you  searched for was not found </p>`;
       app.appendChild(div);
-    });
+    }
   };
 
   search();
