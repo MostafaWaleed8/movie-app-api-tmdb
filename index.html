@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- JS -->
     <script src="app.js" defer></script>
+    <script src="search.js" defer></script>
     <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
     <!-- Font -->
@@ -14,9 +15,20 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,700&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>Movie App</title>
   </head>
   <body>
+    <header>
+      <img src="logo.svg" class="logo" alt="" />
+      <form method="post" id="search">
+        <input
+          type="text"
+          class="search"
+          placeholder="Search..."
+          id="searchbar"
+        />
+      </form>
+    </header>
     <div id="app"></div>
     <noscript
       >Please Allow JavaScript in your browser as the hole website is built on

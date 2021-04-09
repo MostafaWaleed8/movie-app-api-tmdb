@@ -11,13 +11,51 @@ body {
   font-weight: 400;
 }
 
+header {
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  background-color: #273043;
+  box-shadow: 1px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+  width: 70px;
+}
+
+.search {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background-color: #424a58;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+.search:focus {
+  outline: none;
+  color: #fff;
+}
+
+.search::placeholder {
+  color: #fff;
+}
+
 #app {
+  padding-top: 10rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   border-radius: 5px;
   overflow: hidden;
@@ -28,9 +66,12 @@ body {
 
 .card img {
   width: 100%;
+  object-fit: cover;
+  height: 100%;
 }
 
 .card .n-v {
+  width: 100%;
   padding: 0.5rem;
   display: flex;
   align-items: center;
@@ -38,7 +79,7 @@ body {
 }
 
 .card .n-v .title {
-  max-width: 20ch;
+  max-width: 35ch;
 }
 
 .card .n-v .vote {
@@ -49,7 +90,7 @@ body {
 }
 
 .card .overview {
-  transform: translateY(100%);
+  transform: translateY(101%);
   overflow-y: auto;
   max-height: 40%;
   padding: 0.5rem;
@@ -61,7 +102,6 @@ body {
   color: #273043;
   transition: all 0.2s ease-in-out;
 }
-
 .card:hover .overview {
   transform: translateY(0);
 }
@@ -74,4 +114,10 @@ body {
 }
 .green-v {
   color: #00c200;
+}
+
+@media screen and (max-width: 500px) {
+  .logo {
+    width: 50px;
+  }
 }
