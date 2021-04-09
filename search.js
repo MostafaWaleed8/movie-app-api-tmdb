@@ -24,7 +24,7 @@ form.addEventListener("submit", (e) => {
             <span class="vote
              ${movie.vote_average >= 8 ? "green-v" : ""} 
              ${movie.vote_average < 8 ? "yellow-v" : ""} 
-             ${movie.vote_average <= 6 ? "red-v" : ""} ">
+             ${movie.vote_average <= 5 ? "red-v" : ""} ">
               ${movie.vote_average}
               </span>
             </div>

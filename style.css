@@ -120,4 +120,8 @@ header {
   .logo {
     width: 50px;
   }
+
+  .card img {
+    height: auto;
+  }
 }
