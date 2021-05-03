@@ -64,10 +64,28 @@ header {
   margin: 1rem 0.5rem;
 }
 
-.card img {
+.card .movie-poster {
   width: 100%;
   object-fit: cover;
   height: 100%;
+  position: relative;
+  pointer-events: none;
+  user-select: none;
+}
+
+.card .trailer-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5rem;
+  background: #000;
+  padding: 1rem;
+  opacity: 0.7;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  z-index: 1;
+  user-select: none;
 }
 
 .card .n-v {
@@ -101,6 +119,7 @@ header {
   background: #fff;
   color: #273043;
   transition: all 0.2s ease-in-out;
+  z-index: 2;
 }
 .card:hover .overview {
   transform: translateY(0);
