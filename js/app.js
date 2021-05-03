@@ -76,7 +76,7 @@ const getMovies = async() => {
 
             moviepbtn.addEventListener("click", () => {
                 const id = movie.id;
-                window.location.href = `${"http://localhost:5500" + "?id=" + id}`;
+                window.location.href = `${window.location + "?id=" + id}`;
             });
         };
 
