@@ -1,8 +1,8 @@
 //! APIs !//
 const BASE_API =
-    "https://api.themoviedb.org/3/movie/popular?api_key=26422703fa0de205ab53753b9502d57c";
+  "https://api.themoviedb.org/3/movie/popular?api_key=26422703fa0de205ab53753b9502d57c";
 
-const IMG_API = "http://image.tmdb.org/t/p/w500";
+const IMG_API = "https://image.tmdb.org/t/p/w500";
 
 const TRAILER_API_F = "https://api.themoviedb.org/3/movie/";
 const TRAILER_API_S = "/videos?api_key=26422703fa0de205ab53753b9502d57c";
@@ -27,23 +27,22 @@ header.innerHTML = `
 </form>
 </div>`;
 
+const getMovies = async () => {
+  const res = await fetch(BASE_API);
+  const data = await res.json();
+  const movies = await data.results;
 
-const getMovies = async() => {
-    const res = await fetch(BASE_API);
-    const data = await res.json();
-    const movies = await data.results;
+  await movies.map((movie) => {
+    const getMovieswT = async () => {
+      const tres = await fetch(TRAILER_API_F + movie.id + TRAILER_API_S);
+      const tdata = await tres.json();
+      const tmovies = await tdata.results;
+      const tYTlink = `https://youtube.com/embed/${tmovies[0].key}`;
 
-    await movies.map((movie) => {
-        const getMovieswT = async() => {
-            const tres = await fetch(TRAILER_API_F + movie.id + TRAILER_API_S);
-            const tdata = await tres.json();
-            const tmovies = await tdata.results;
-            const tYTlink = `https://youtube.com/embed/${tmovies[0].key}`;
+      const div = document.createElement("div");
 
-            const div = document.createElement("div");
-
-            div.classList.add("card");
-            div.innerHTML = `
+      div.classList.add("card");
+      div.innerHTML = `
           <div class="img">
           <img src=${
             IMG_API + movie.poster_path
@@ -70,16 +69,16 @@ const getMovies = async() => {
               <h3>${movie.overview}</h3> 
           </div>
           `;
-            app.appendChild(div);
+      app.appendChild(div);
 
-            const moviepbtn = document.getElementById(movie.id);
+      const moviepbtn = document.getElementById(movie.id);
 
-            moviepbtn.addEventListener("click", () => {
-                const id = movie.id;
-                window.location.href = `${window.location + "?id=" + id}`;
-            });
-        };
+      moviepbtn.addEventListener("click", () => {
+        const id = movie.id;
+        window.location.href = `${window.location + "?id=" + id}`;
+      });
+    };
 
-        getMovieswT();
-    });
+    getMovieswT();
+  });
 };
