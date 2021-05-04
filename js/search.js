@@ -1,32 +1,30 @@
 const SEARCH_API =
-    "https://api.themoviedb.org/3/search/movie?api_key=26422703fa0de205ab53753b9502d57c&query=";
+  "https://api.themoviedb.org/3/search/movie?api_key=26422703fa0de205ab53753b9502d57c&query=";
 
 const form = document.getElementById("search");
 const searchInput = document.getElementById("searchbar");
 
 form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    app.innerHTML = "";
-    const formSearch = searchInput.value;
+  e.preventDefault();
+  app.innerHTML = "";
+  const formSearch = searchInput.value;
 
-    const search = async() => {
-        const res = await fetch(SEARCH_API + formSearch);
-        const data = await res.json();
-        const movies = await data.results;
-        console.log(movies);
-        if (movies.length > 0) {
-            await movies.map((movie) => {
-                const getMovieswT = async() => {
-                    const tres = await fetch(TRAILER_API_F + movie.id + TRAILER_API_S);
-                    const tdata = await tres.json();
-                    const tmovies = await tdata.results;
-                    console.log(tmovies[0].key);
-                    const tYTlink = `https://youtube.com/embed/${tmovies[0].key}`;
+  const search = async () => {
+    const res = await fetch(SEARCH_API + formSearch);
+    const data = await res.json();
+    const movies = await data.results;
+    if (movies.length > 0) {
+      await movies.map((movie) => {
+        const getMovieswT = async () => {
+          const tres = await fetch(TRAILER_API_F + movie.id + TRAILER_API_S);
+          const tdata = await tres.json();
+          const tmovies = await tdata.results;
+          const tYTlink = `https://youtube.com/embed/${tmovies[0].key}`;
 
-                    const div = document.createElement("div");
+          const div = document.createElement("div");
 
-                    div.classList.add("card");
-                    div.innerHTML = `
+          div.classList.add("card");
+          div.innerHTML = `
           <div class="img">
           <img src=${
             IMG_API + movie.poster_path
@@ -53,24 +51,24 @@ form.addEventListener("submit", (e) => {
               <h3>${movie.overview}</h3> 
           </div>
           `;
-                    app.appendChild(div);
-                    const moviepbtn = document.getElementById(movie.id);
+          app.appendChild(div);
+          const moviepbtn = document.getElementById(movie.id);
 
-                    moviepbtn.addEventListener("click", () => {
-                        const id = movie.id;
-                        window.location.href = `${"http://localhost:5500" + "?id=" + id}`;
-                    });
-                };
+          moviepbtn.addEventListener("click", () => {
+            const id = movie.id;
+            window.location.href = `${"http://localhost:5500" + "?id=" + id}`;
+          });
+        };
 
-                getMovieswT();
-            });
-        } else {
-            const div = document.createElement("div");
-            div.classList.add("card");
-            div.innerHTML = `<p>Sorry, the movie that you  searched for was not found </p>`;
-            app.appendChild(div);
-        }
-    };
+        getMovieswT();
+      });
+    } else {
+      const div = document.createElement("div");
+      div.classList.add("card");
+      div.innerHTML = `<p>Sorry, the movie that you  searched for was not found </p>`;
+      app.appendChild(div);
+    }
+  };
 
-    search();
+  search();
 });

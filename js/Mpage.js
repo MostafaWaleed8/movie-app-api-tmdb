@@ -5,7 +5,6 @@ if (mvid) {
   const getMoviePageat = async () => {
     const smres = await fetch(FSINGLE_MOVIE_API + mvid + SSINGLE_MOVIE_API);
     const smovie = await smres.json();
-    console.log(smovie);
 
     const tres = await fetch(TRAILER_API_F + mvid + TRAILER_API_S);
     const tdata = await tres.json();
@@ -22,8 +21,6 @@ if (mvid) {
     const movie_date = smovie.release_date.slice(0, 4);
 
     const movie_sQ = (moive_name + " " + movie_date).replaceAll(" ", "-");
-
-    console.log(movie_sQ);
 
     app.classList.add("movie-page");
     app.innerHTML = `
