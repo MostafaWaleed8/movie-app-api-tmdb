@@ -6,6 +6,7 @@ const searchInput = document.getElementById("searchbar");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  app.classList.remove("movie-page");
   app.innerHTML = "";
   const formSearch = searchInput.value;
 

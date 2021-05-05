@@ -8,6 +8,7 @@ const TRAILER_API_F = "https://api.themoviedb.org/3/movie/";
 const TRAILER_API_S = "/videos?api_key=26422703fa0de205ab53753b9502d57c";
 
 const FSINGLE_MOVIE_API = "https://api.themoviedb.org/3/movie/";
+
 const SSINGLE_MOVIE_API = "?api_key=26422703fa0de205ab53753b9502d57c";
 //! End of APIs !//
 

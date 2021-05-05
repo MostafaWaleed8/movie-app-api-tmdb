@@ -284,6 +284,14 @@ hr {
   border-radius: 5px;
 }
 
+.ntav {
+  background-color: #002c00 !important;
+  color: #fff !important;
+  border: 3px solid #002c00 !important ;
+}
+
+
+
 @media screen and (max-width: 600px) {
   .logo {
     width: 50px;
