@@ -1,4 +1,4 @@
-const MOVIE_API = "https://fuckyou-api.herokuapp.com?name=";
+const MOVIE_API = "https://getmovieapi.herokuapp.com/?name=";
 
 const url_string = window.location.href;
 const url = new URL(url_string);
@@ -19,15 +19,19 @@ if (mvid) {
       .replaceAll(" ", "-")
       .replaceAll("'", "")
       .replaceAll("/", "-")
+      .replaceAll(".", "")
       .toLowerCase();
 
     const movie_date = smovie.release_date.slice(0, 4);
 
-    const movie_sQ = (moive_name + " " + movie_date).replaceAll(" ", "-");
+    const movie_sQ = (moive_name + " " + movie_date)
+      .replaceAll(" ", "-")
+      .replace("tom-clancys-", "");
+    console.log(movie_sQ);
 
     const smovier = await fetch(MOVIE_API + movie_sQ);
     await console.log(smovier.status);
-    
+
     if (smovier.status == 200) {
       const smoview = await smovier.json();
       app.classList.add("movie-page");
@@ -46,7 +50,7 @@ if (mvid) {
           <div class="banner-overlab">
             <h1 class="movie-title">${smovie.title}</h1>
             <div class="bo-btns">
-            <a class="btn" href=${tYTlink} data-lity>Watch Trailer</a>
+            <a class="btn" href=${"https://s309d1.akwam.download/download/1620318323/6092c6f36d817/The.Clockwork.Girl.2021.480p.WEB.akwam.io.mp4"} data-lity>Watch Trailer</a>
             <a class="btn btn-wm" data-lity href=${await smoview.movie} >Watch Movie</a>
           </div>
         </div>
@@ -173,3 +177,5 @@ if (mvid) {
 } else {
   getMovies();
 }
+
+
